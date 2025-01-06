@@ -6,4 +6,3 @@ echo "username entered is $USERNAME"
 
 echo "please enter password::"
 read -s PASSWORD
-
