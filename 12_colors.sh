@@ -2,20 +2,24 @@
 
 USERID=$(id -u)
 
+R="\e[31m"
+G="\e[32m"
+y="\e[33m"
+
 VALIDATE(){               # function
 if [ $1 -ne 0 ]           # $1 means argument 1 from the VALIDATE function $?
     then
-        echo "$2.......FAILURE."
+        echo "$2.......$R FAILURE."
         exit 1
     else
-        echo "$2........SUCCESS."
+        echo "$2........$G SUCCESS."
     fi
 }
 
 
 if [ $USERID -ne 0 ]
 then
-    echo "error:: Please run this script as rootuser or with sudo."
+    echo "error:: $R Please run this script as rootuser or with sudo."
     exit 1                                                                                          # other than 0
 fi
 
@@ -26,7 +30,7 @@ then
     dnf install mysql -y
     VALIDATED $? "Installing MYSQL"                                # $? stores previous commands output 0 or 1, $? and installling mysql are arguments passed to the function
 else
-    echo "MySQL is already installed."
+    echo -e "MySQL is already ....$Y installed."
 fi
 
 
@@ -38,7 +42,7 @@ then
     dnf install git -y
     VALIDATE $? "Installing GIT"                                    
 else
-    echo "GIT is already.......installed."
+    echo -e "GIT is already.......$Y installed."
 fi
 
 
