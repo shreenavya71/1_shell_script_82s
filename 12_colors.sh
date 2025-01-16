@@ -4,7 +4,7 @@ USERID=$(id -u)
 
 R="\e[31m"
 G="\e[32m"
-y="\e[33m"
+Y="\e[33m"
 
 VALIDATE(){               # function
 if [ $1 -ne 0 ]           # $1 means argument 1 from the VALIDATE function $?
@@ -30,7 +30,7 @@ then
     dnf install mysql -y
     VALIDATED $? "Installing MYSQL"                                # $? stores previous commands output 0 or 1, $? and installling mysql are arguments passed to the function
 else
-    echo -e "MySQL is already ....$Y installed."
+    echo -e "MySQL is already .... $Y installed."
 fi
 
 
@@ -42,7 +42,7 @@ then
     dnf install git -y
     VALIDATE $? "Installing GIT"                                    
 else
-    echo -e "GIT is already.......$Y installed."
+    echo -e "GIT is already....... $Y installed."
 fi
 
 
