@@ -1,6 +1,6 @@
 #!/bin/bash
 
-NUMBER=$1
+NUMBER=$1  # we have to pass argument here 
 
 # -gt = greater than, -lt = less than, -eq = equal to, -ge = greater than or equal to, -le = less than or equal to.
 if [ $NUMBER -gt 100 ]
