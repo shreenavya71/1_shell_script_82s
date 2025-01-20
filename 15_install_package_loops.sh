@@ -6,9 +6,8 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
-# create a folder(directory) shellscript-logs in /var/log/shellscript-logs
 LOGS_FOLDER="/var/log/shellscript-logs"
-LOG_FILE=$( echo $0 | cut -d "." -f1 )   # 13_logs ====cutting the .sh from the file name 13_logs.sh
+LOG_FILE=$(echo $0 | cut -d "." -f1 )
 TIMESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
 LOG_FILE_NAME="$LOGS_FOLDER/$LOG_FILE-$TIMESTAMP.log"
 
@@ -35,13 +34,13 @@ echo "Script started executing at: $TIMESTAMP" &>>$LOG_FILE_NAME
 CHECK_ROOT
 
 for package in $@
-do 
+do
     dnf list installed $package &>>$LOG_FILE_NAME
     if [ $? -ne 0 ]
-    then 
+    then
         dnf install $package -y &>>$LOG_FILE_NAME
         VALIDATE $? "Installing $package"
     else
-        echo -e "$package is already $Y ... Installed $N"
+        echo -e "$package is already $Y ... INSTALLED $N"
     fi
 done
